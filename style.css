@@ -1,27 +1,53 @@
+/* General Reset */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background: #f4f6f9;
   color: #333;
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  padding: 30px;
 }
 
-#resume {
-  width: 210mm; /* A4 width */
-  height: 297mm; /* A4 height */
+/* Portfolio Container */
+.portfolio {
+  width: 100%;
+  max-width: 900px;
   background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+}
+
+.portfolio-title {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.subtitle {
+  text-align: center;
+  color: gray;
+  margin-bottom: 25px;
+}
+
+/* ===== A4 Resume Styling ===== */
+.a4 {
+  background: white;
+  width: 210mm;     /* Standard A4 width */
+  min-height: 297mm; /* Standard A4 height */
+  margin: auto;
   padding: 20mm;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden; /* Prevents overflow */
+  border: 1px solid #ddd;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  font-size: 14px;
 }
 
 .header {
@@ -30,30 +56,47 @@ body {
   margin-bottom: 20px;
 }
 
-.header .left {
-  flex: 1;
+.header .left h1 {
+  font-size: 1.8em;
+  color: #444;
 }
 
-.header .right {
-  text-align: right;
+.header .right p {
+  margin: 3px 0;
+  font-size: 0.9em;
+}
+.header .right a {
+  color: #0073b1;
+  text-decoration: none;
+}
+.header .right a:hover {
+  text-decoration: underline;
 }
 
 .section {
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
-h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  border-bottom: 2px solid #333;
+.section h2 {
+  font-size: 1.2em;
   padding-bottom: 5px;
+  border-bottom: 2px solid #0073b1;
+  color: #0073b1;
+  margin-bottom: 8px;
 }
 
+.section p,
+.section ul {
+  font-size: 0.95em;
+  margin: 5px 0;
+}
+
+.section ul {
+  list-style: disc;
+  margin-left: 20px;
+}
+
+/* Two Column Skills */
 .two-column {
   display: flex;
   justify-content: space-between;
@@ -63,42 +106,36 @@ h2 {
   width: 48%;
 }
 
-ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-ul li {
-  margin-bottom: 10px;
-}
-
+/* Download Button */
 footer {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background: #0073b1;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 1em;
 }
-
 button:hover {
-  background-color: #0056b3;
+  background: #005580;
 }
 
-/* Print styles */
+/* Printable Style */
 @media print {
   body {
     background: none;
   }
-  #resume {
+  .portfolio {
     box-shadow: none;
-    width: 100%;
-    height: auto;
-    padding: 10mm;
+    border: none;
+    padding: 0;
+  }
+  footer {
+    display: none;
   }
 }
