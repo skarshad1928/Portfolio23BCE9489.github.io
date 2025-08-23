@@ -8,21 +8,22 @@
 
 /* Body */
 body {
-  background: #f4f4f9;
+  background: #dfe3eb;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px;
+  padding: 20px;
 }
 
-/* Resume (A4 size look) */
+/* Resume (fixed A4 size on screen + when printing) */
 #resume {
-  width: 210mm;
-  min-height: 297mm;
+  width: 210mm;             /* A4 width */
+  min-height: 297mm;        /* A4 height */
   padding: 20mm;
   background: #fff;
-  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
   border-radius: 6px;
+  margin-bottom: 20px;
 }
 
 /* Header */
@@ -39,18 +40,22 @@ body {
   color: #222;
 }
 
+/* Contact details */
 .header .right p {
   font-size: 14px;
   margin: 2px 0;
 }
 
-.header a {
-  color: #0073e6;
-  text-decoration: none;
+/* Links style */
+a {
+  color: #0056a3;           /* professional dark blue */
+  text-decoration: none;    /* remove underline */
+  font-weight: 500;
 }
 
-.header a:hover {
+a:hover {
   text-decoration: underline;
+  color: #003d73;
 }
 
 /* Section */
@@ -86,7 +91,7 @@ body {
 /* Footer */
 footer {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 button {
