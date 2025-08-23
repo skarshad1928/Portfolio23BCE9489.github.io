@@ -2,79 +2,86 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Resume - A4 Portfolio</title>
+  <title>SK Arshad - Data Analyst</title>
   <link rel="stylesheet" href="style.css">
+  <!-- html2pdf.js for download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
-  <div class="resume">
-    <header>
-      <h1>First Last</h1>
-      <p>Email: yourname@email.com | LinkedIn: 
-        <a href="#">linkedin.com/in/yourprofile</a> | 
-        GitHub: <a href="#">github.com/yourprofile</a>
-      </p>
-    </header>
+  <div id="resume">
+    <div class="header">
+      <div class="left">
+        <h1>SK Arshad</h1>
+        <p>Data Analyst | Aspiring MongoDB DBA</p>
+      </div>
+      <div class="right">
+        <p><strong>Phone:</strong> +91 7416828005</p>
+        <p><strong>Email:</strong> <a href="mailto:sar213083168@gmail.com">sar213083168@gmail.com</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/skarshad1928" target="_blank">github.com/skarshad1928</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/shaik-arshad-b86222356/" target="_blank">linkedin.com/in/shaik-arshad</a></p>
+      </div>
+    </div>
 
-    <!-- Summary -->
-    <section class="section">
+    <div class="section">
       <h2>Summary</h2>
-      <p>Data Analyst skilled in Python, R, SQL, Power BI, and MongoDB. Experienced in data collection, cleaning, and building dashboards. Passionate about turning data into actionable insights.</p>
-    </section>
+      <p>
+        Data Analyst skilled in Python, R, SQL, and Power BI. Experienced in data collection, cleaning, and building dashboards. 
+        Passionate about turning data into actionable insights to support business decisions. Currently expanding expertise in MongoDB administration.
+      </p>
+    </div>
 
-    <!-- Education -->
-    <section class="section">
+    <div class="section">
       <h2>Education</h2>
-      <p><b>B.Tech in Computer Science and Engineering</b> — VIT-AP University (2023–2027)</p>
-      <p><b>Intermediate (MPC)</b> — Sri Chaitanya Junior College (2021–2023)</p>
-    </section>
+      <p><strong>B.Tech in Computer Science and Engineering</strong> — VIT-AP University (2023–2027)</p>
+      <p><strong>Intermediate (MPC)</strong> — Sri Chaitanya Junior College (2021–2023)</p>
+    </div>
 
-    <!-- Skills -->
-    <section class="section">
+    <div class="section">
       <h2>Skills</h2>
-      <p><b>Languages:</b> Python, R, SQL</p>
-      <p><b>Databases:</b> MySQL, MongoDB</p>
-      <p><b>Frameworks/Libraries:</b> Pandas, NumPy, Scikit-Learn, Matplotlib, Seaborn, BeautifulSoup</p>
-      <p><b>Tools:</b> Power BI, Excel, VS Code, Jupyter Notebook, Streamlit, Git</p>
-      <p><b>Platforms:</b> GitHub, Google Colab</p>
-      <p><b>Soft Skills:</b> Communication, Problem Solving, Time Management</p>
-    </section>
+      <div class="two-column">
+        <div>
+          <p><strong>Languages:</strong> Python, R, SQL</p>
+          <p><strong>Frameworks/Libraries:</strong> Pandas, NumPy, Scikit-Learn, Matplotlib, Seaborn, BeautifulSoup</p>
+          <p><strong>Tools:</strong> Power BI, Excel, VS Code, Jupyter Notebook, Streamlit, Git</p>
+        </div>
+        <div>
+          <p><strong>Databases:</strong> MySQL, MongoDB</p>
+          <p><strong>Platforms:</strong> GitHub, Google Colab</p>
+          <p><strong>Soft Skills:</strong> Communication, Problem Solving, Time Management</p>
+        </div>
+      </div>
+    </div>
 
-    <!-- Work Experience -->
-    <section class="section">
+    <div class="section">
       <h2>Work Experience</h2>
-      <div class="job">
-        <h3>Internship: MongoDB Database Administrator</h3>
-        <p>
-          Hands-on experience managing and administering MongoDB databases, including configuration,
-          optimization, and backup strategies.  
-          <a href="https://github.com/skarshad1928/23BCE9489-Mongo-DBA-Arshad" target="_blank">
-            View Internship Project
-          </a>
-        </p>
-      </div>
-    </section>
+      <ul>
+        <li>
+          <strong>MongoDB Internship</strong> — Remote (2025)<br>
+          Worked on database design, CRUD operations, aggregation pipelines, and performance optimization.  
+          <a href="https://github.com/skarshad1928/23BCE9489-Mongo-DBA-Arshad" target="_blank" class="link">GitHub Repository</a>
+        </li>
+      </ul>
+    </div>
 
-    <!-- Projects -->
-    <section class="section">
+    <div class="section">
       <h2>Projects</h2>
-      <div class="project">
-        <p><b>Footstep Generator:</b> Developed a device that converts mechanical stress from footsteps into electricity by generating alternating current, showcasing sustainable energy harvesting using piezoelectric principles.</p>
-      </div>
-    </section>
+      <ul>
+        <li><strong>Footstep Generator:</strong> Developed a device that converts mechanical stress from footsteps into electricity by generating alternating current, showcasing sustainable energy harvesting using piezoelectric principles.</li>
+      </ul>
+    </div>
 
-    <!-- Certifications -->
-    <section class="section">
+    <div class="section">
       <h2>Certifications</h2>
-      <div class="cert">
-        <p>🔗 <a href="#">IBM Introduction to Data Analytics — Coursera Verification</a></p>
-        <p>🔗 <a href="#">Data Analytics Job Simulation — Completion Certificate</a></p>
-      </div>
-    </section>
-
-    <!-- Download Button -->
-    <button onclick="downloadResume()">📥 Download PDF</button>
+      <ul>
+        <li><a href="https://www.coursera.org/account/accomplishments/verify/5Y4GYTT82DSY" target="_blank">IBM Introduction to Data Analytics – Coursera</a></li>
+        <li><a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_J99BAXZvWbjCwMYFv_1754740084837_completion_certificate.pdf" target="_blank">Data Analytics Job Simulation – Forage</a></li>
+      </ul>
+    </div>
   </div>
+
+  <footer>
+    <button onclick="downloadResume()">Download Resume</button>
+  </footer>
 
   <script src="script.js"></script>
 </body>
