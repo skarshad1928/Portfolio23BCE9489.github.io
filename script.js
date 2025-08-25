@@ -16,18 +16,18 @@ async function downloadResume() {
   const pageWidth = pdf.internal.pageSize.getWidth();
   const pageHeight = pdf.internal.pageSize.getHeight();
 
-  // Calculate image dimensions
+  // Scale image to page width
   const imgWidth = pageWidth;
   const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
   let heightLeft = imgHeight;
   let position = 0;
 
-  // Add first page
-  pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+  // Add first page (always start at top: y=0)
+  pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
   heightLeft -= pageHeight;
 
-  // Add remaining pages if content overflows
+  // Add extra pages if needed
   while (heightLeft > 0) {
     position = heightLeft - imgHeight;
     pdf.addPage();
