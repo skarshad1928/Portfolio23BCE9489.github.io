@@ -1,41 +1,41 @@
-<!-- Add this script inside your HTML file -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
-function downloadResume() {
-  const element = document.getElementById("resume");
-  
-  // Better configuration
-  const opt = {
-    margin:       [10, 10, 10, 10], // top, left, bottom, right
-    filename:     'SK_Arshad_Resume.pdf',
-    image:        { type: 'jpeg', quality: 1 },
-    html2canvas:  { 
-      scale: 3,               // Higher scale for better quality
-      useCORS: true,          // Fix for images from external sources
-      logging: false
-    },
-    jsPDF:        { 
-      unit: 'mm', 
-      format: 'a4', 
-      orientation: 'portrait' 
-    }
-  };
+async function downloadResume() {
+  const { jsPDF } = window.jspdf;
 
-  // Make sure content fits properly (page-break fix)
-  html2pdf()
-    .set(opt)
-    .from(element)
-    .toPdf()
-    .get('pdf')
-    .then(function (pdf) {
-      const totalPages = pdf.internal.getNumberOfPages();
-      for (let i = 1; i <= totalPages; i++) {
-        pdf.setPage(i);
-        pdf.setFontSize(10);
-        pdf.text('SK Arshad Resume', pdf.internal.pageSize.getWidth() - 60, pdf.internal.pageSize.getHeight() - 10);
-      }
-    })
-    .save();
+  const resumeElement = document.getElementById("resume");
+
+  // Capture resume as image
+  const canvas = await html2canvas(resumeElement, { scale: 2 });
+  const imgData = canvas.toDataURL("image/png");
+
+  // A4 size in mm
+  const pdf = new jsPDF("p", "mm", "a4");
+  const pageWidth = pdf.internal.pageSize.getWidth();
+  const pageHeight = pdf.internal.pageSize.getHeight();
+
+  // Calculate image dimensions
+  const imgWidth = pageWidth;
+  const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+  let heightLeft = imgHeight;
+  let position = 0;
+
+  // Add first page
+  pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+  heightLeft -= pageHeight;
+
+  // Add remaining pages if content overflows
+  while (heightLeft > 0) {
+    position = heightLeft - imgHeight;
+    pdf.addPage();
+    pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+    heightLeft -= pageHeight;
+  }
+
+  // Save PDF
+  pdf.save("SK_Arshad_Resume.pdf");
 }
 </script>
