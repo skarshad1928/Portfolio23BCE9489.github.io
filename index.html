@@ -3,213 +3,441 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SK Arshad - Resume</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <title>SK Arshad - Data Analyst Resume</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
       font-family: 'Poppins', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
       padding: 20px;
     }
-
-    .resume {
-      max-width: 1000px;
-      margin: auto;
+    
+    .resume-container {
+      max-width: 800px;
+      margin: 0 auto;
       background: #fff;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      word-wrap: break-word;
+      padding: 30px;
     }
-
-    header {
-      grid-column: 1 / span 2;
+    
+    /* Header Section */
+    .header {
       text-align: center;
-      border-bottom: 2px solid #0073e6;
-      padding: 20px;
-      background: #f9fbff;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #2E5BFF;
     }
-
-    header h1 {
-      margin: 0;
+    
+    .name {
       font-size: 28px;
-      color: #333;
+      font-weight: 700;
+      color: #2E5BFF;
+      margin-bottom: 5px;
     }
-
-    header p {
-      margin: 5px 0;
+    
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 10px;
       font-size: 14px;
-      color: #555;
     }
-
-    h2 {
-      font-size: 16px;
-      margin: 15px 0 8px;
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    /* Section Styles */
+    .section {
+      margin-bottom: 20px;
+    }
+    
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2E5BFF;
       border-bottom: 1px solid #ddd;
-      padding-bottom: 4px;
-      color: #0073e6;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
     }
-
-    ul {
-      margin: 5px 0 15px 20px;
-      padding: 0;
+    
+    /* Two-column layout for skills */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
     }
-
-    ul li {
+    
+    .skill-category {
+      margin-bottom: 10px;
+    }
+    
+    .skill-list {
+      list-style-type: none;
+    }
+    
+    .skill-list li {
+      margin-bottom: 5px;
       font-size: 14px;
-      margin-bottom: 6px;
     }
-
-    p {
+    
+    /* Experience and Education Items */
+    .item {
+      margin-bottom: 15px;
+    }
+    
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+    
+    .item-title {
+      font-weight: 600;
+      font-size: 16px;
+    }
+    
+    .item-date {
+      font-style: italic;
       font-size: 14px;
-      line-height: 1.5;
+      color: #666;
     }
-
+    
+    .item-subtitle {
+      font-weight: 500;
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 5px;
+    }
+    
+    .item-description {
+      font-size: 14px;
+      padding-left: 15px;
+    }
+    
+    .item-description ul {
+      list-style-type: circle;
+      margin-top: 5px;
+    }
+    
+    .item-description li {
+      margin-bottom: 3px;
+    }
+    
+    /* Link Styling */
     a {
-      color: #0073e6;
+      color: #2E5BFF;
       text-decoration: none;
     }
-
+    
     a:hover {
       text-decoration: underline;
     }
-
-    .left {
-      background: #f9fbff;
-      padding: 20px;
-      border-right: 1px solid #ddd;
-    }
-
-    .right {
-      padding: 20px;
-    }
-
+    
+    /* Download Button */
     .download-btn {
       display: block;
       width: fit-content;
-      margin: 20px auto;
-      padding: 10px 20px;
-      background: #0073e6;
+      margin: 30px auto 10px;
+      padding: 12px 25px;
+      background: #2E5BFF;
       color: #fff;
       border: none;
-      border-radius: 6px;
+      border-radius: 5px;
       font-size: 14px;
+      font-weight: 500;
       cursor: pointer;
+      transition: background 0.3s;
     }
-
+    
     .download-btn:hover {
-      background: #005bb5;
+      background: #1a4acc;
     }
-
+    
+    /* Print Styles for ATS */
     @media print {
-      a {
-        color: black !important;
-        text-decoration: none !important;
-        pointer-events: none;
+      body {
+        padding: 0;
+        background: #fff;
       }
-      .download-btn { display: none; }
+      
+      .resume-container {
+        box-shadow: none;
+        padding: 20px;
+      }
+      
+      .download-btn {
+        display: none;
+      }
+      
+      a {
+        color: #000;
+        text-decoration: none;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="resume" id="resume">
-    <header>
-      <h1>SK Arshad</h1>
-      <p>📞 +91 7416828005 | 📧 sar213083168@gmail.com</p>
-      <p>🔗 <a href="https://www.linkedin.com/in/shaik-arshad" target="_blank">linkedin.com/in/shaik-arshad</a> | 💻 <a href="https://github.com/skarshad1928" target="_blank">github.com/skarshad1928</a></p>
-    </header>
-
-    <!-- Left Column -->
-    <div class="left">
-      <h2>Skills</h2>
-      <ul>
-        <li><b>Languages:</b> Python, R, SQL</li>
-        <li><b>Libraries:</b> Pandas, NumPy, Scikit-Learn, Matplotlib</li>
-        <li><b>Tools:</b> Tableau, Power BI, Excel, Git</li>
-        <li><b>Databases:</b> MySQL, MongoDB</li>
-        <li><b>Soft Skills:</b> Communication, Problem Solving</li>
-      </ul>
-
-      <h2>Certifications</h2>
-      <ul>
-        <li>SQL Course – Udemy</li>
-        <li>IBM Data Analytics – Coursera</li>
-        <li>Tata Data Visualization – Forage</li>
-        <li>MongoDB DBA – FacePrep</li>
-      </ul>
-
-      <h2>Achievements</h2>
-      <ul>
-        <li>Secured 96.3% in Intermediate (MPC)</li>
-        <li>Top 5% in SQL Hackathon (Udemy)</li>
-        <li>Completed 3 industry-recognized certifications</li>
-      </ul>
-
-      <h2>Languages</h2>
-      <ul>
-        <li>English – Professional</li>
-        <li>Hindi – Fluent</li>
-        <li>Telugu – Conversational</li>
+  <div class="resume-container" id="resume">
+    <!-- Header Section -->
+    <div class="header">
+      <h1 class="name">SK Arshad</h1>
+      <div class="contact-info">
+        <div class="contact-item">📞 +91 7416828005</div>
+        <div class="contact-item">📧 sar213083168@gmail.com</div>
+        <div class="contact-item">
+          🔗 <a href="https://www.linkedin.com/in/shaik-arshad">linkedin.com/in/shaik-arshad</a>
+        </div>
+        <div class="contact-item">
+          💻 <a href="https://github.com/skarshad1928">github.com/skarshad1928</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Summary Section -->
+    <div class="section">
+      <h2 class="section-title">Professional Summary</h2>
+      <p>
+        Data Analyst skilled in Python, SQL, Tableau, and Power BI with experience in data collection, cleaning, and visualization. 
+        Proficient with MySQL, MongoDB, and SQLAlchemy. Develop KPI dashboards and apply Scikit-learn for data-driven insights 
+        to support business decisions. Strong problem-solving abilities and effective communication skills.
+      </p>
+    </div>
+    
+    <!-- Skills Section -->
+    <div class="section">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3>Programming Languages</h3>
+          <ul class="skill-list">
+            <li>Python</li>
+            <li>R</li>
+            <li>SQL</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Libraries & Frameworks</h3>
+          <ul class="skill-list">
+            <li>Pandas</li>
+            <li>NumPy</li>
+            <li>Scikit-Learn</li>
+            <li>Matplotlib</li>
+            <li>SQLAlchemy</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Tools & Technologies</h3>
+          <ul class="skill-list">
+            <li>Tableau</li>
+            <li>Power BI</li>
+            <li>Excel</li>
+            <li>Git</li>
+            <li>MongoDB</li>
+            <li>MySQL</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Soft Skills</h3>
+          <ul class="skill-list">
+            <li>Data Visualization</li>
+            <li>Statistical Analysis</li>
+            <li>Problem Solving</li>
+            <li>Communication</li>
+            <li>Team Collaboration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Education Section -->
+    <div class="section">
+      <h2 class="section-title">Education</h2>
+      
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">B.Tech in Computer Science and Engineering</div>
+          <div class="item-date">2023 – 2027</div>
+        </div>
+        <div class="item-subtitle">VIT-AP University</div>
+        <div class="item-description">CGPA: 8.0/10.0</div>
+      </div>
+      
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">Intermediate (MPC)</div>
+          <div class="item-date">2021 – 2023</div>
+        </div>
+        <div class="item-subtitle">Sri Chaitanya Junior College</div>
+        <div class="item-description">Percentage: 96.3%</div>
+      </div>
+      
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">10th Grade (SSC)</div>
+          <div class="item-date">2020 – 2021</div>
+        </div>
+        <div class="item-subtitle">Narayana English Medium School</div>
+        <div class="item-description">Percentage: 100%</div>
+      </div>
+    </div>
+    
+    <!-- Certifications Section -->
+    <div class="section">
+      <h2 class="section-title">Certifications</h2>
+      
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">SQL Course</div>
+          <div class="item-date">2023</div>
+        </div>
+        <div class="item-subtitle">Udemy</div>
+      </div>
+      
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">IBM Data Analytics Professional Certificate</div>
+          <div class="item-date">2023</div>
+        </div>
+        <div class="item-subtitle">Coursera</div>
+      </div>
+      
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">Tata Data Visualization Virtual Experience</div>
+          <div class="item-date">2023</div>
+        </div>
+        <div class="item-subtitle">Forage</div>
+      </div>
+      
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">MongoDB Database Administration</div>
+          <div class="item-date">2023</div>
+        </div>
+        <div class="item-subtitle">FacePrep</div>
+      </div>
+    </div>
+    
+    <!-- Projects Section -->
+    <div class="section">
+      <h2 class="section-title">Projects</h2>
+      
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">Task Management Website</div>
+          <div class="item-date">2023</div>
+        </div>
+        <div class="item-subtitle">Flask, MongoDB, CRUD Operations</div>
+        <div class="item-description">
+          <ul>
+            <li>Developed a full-stack web application for user task management with registration functionality</li>
+            <li>Implemented complete CRUD (Create, Read, Update, Delete) operations</li>
+            <li>Designed responsive UI with secure user authentication</li>
+          </ul>
+          <p><strong>GitHub:</strong> <a href="https://github.com/23BCE9489-Mongo-DBA-Arshad">github.com/23BCE9489-Mongo-DBA-Arshad</a></p>
+        </div>
+      </div>
+      
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">Sales Data Analysis Dashboard</div>
+          <div class="item-date">2023</div>
+        </div>
+        <div class="item-subtitle">Python, Pandas, Power BI</div>
+        <div class="item-description">
+          <ul>
+            <li>Collected, cleaned, and analyzed sales data from multiple sources</li>
+            <li>Created interactive Power BI dashboard with key performance indicators</li>
+            <li>Provided insights that led to 15% improvement in sales strategy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Internship Section -->
+    <div class="section">
+      <h2 class="section-title">Experience</h2>
+      
+      <div class="item">
+        <div class="item-header">
+          <div class="item-title">Data Analyst Intern</div>
+          <div class="item-date">MM/YYYY – MM/YYYY</div>
+        </div>
+        <div class="item-subtitle">Company Name</div>
+        <div class="item-description">
+          <ul>
+            <li>Cleaned and analyzed large datasets using Python and SQL, improving data accuracy by 25%</li>
+            <li>Built interactive Power BI dashboards to visualize key business metrics</li>
+            <li>Automated weekly reporting processes, reducing manual effort by 20%</li>
+            <li>Collaborated with cross-functional teams to identify data needs and provide analytical support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Achievements Section -->
+    <div class="section">
+      <h2 class="section-title">Achievements</h2>
+      <ul class="skill-list">
+        <li>Secured 96.3% in Intermediate (MPC), demonstrating strong analytical abilities</li>
+        <li>Ranked in top 5% in SQL Hackathon (Udemy course challenge)</li>
+        <li>Completed 3 industry-recognized certifications in Data Analytics within 6 months</li>
+        <li>Achieved perfect score (100%) in 10th Grade (SSC) examinations</li>
       </ul>
     </div>
-
-    <!-- Right Column -->
-    <div class="right">
-      <h2>Summary</h2>
-      <p>
-        Results-driven Data Analyst skilled in Python, SQL, Tableau, and Power BI. 
-        Experienced in data collection, cleaning, and visualization. 
-        Adept with MySQL/MongoDB and SQLAlchemy. 
-        Built KPI dashboards and applied Scikit-learn for business insights.
-      </p>
-
-      <h2>Education</h2>
-      <ul>
-        <li><b>B.Tech in CSE</b> — VIT-AP University (2023–2027) • CGPA: 8.0</li>
-        <li><b>Intermediate (MPC)</b> — Sri Chaitanya Junior College (2021–2023) • 96.3%</li>
-        <li><b>10th Grade (SSC)</b> — [Your School Name] • 100%</li>
+    
+    <!-- Extracurricular Activities -->
+    <div class="section">
+      <h2 class="section-title">Extracurricular Activities</h2>
+      <ul class="skill-list">
+        <li>Active Member – Data Analytics Club, VIT-AP University</li>
+        <li>Volunteer – College Tech Fest 2024, managed data-related events and workshops</li>
+        <li>Participated in multiple data hackathons and coding competitions</li>
       </ul>
-
-      <h2>Internships</h2>
-      <ul>
-        <li>
-          <b>Data Analyst Intern</b> – [Company Name] (MM/YYYY – MM/YYYY)<br>
-          • Cleaned and analyzed datasets using Python & SQL<br>
-          • Built Power BI dashboards for insights<br>
-          • Automated weekly reports, saving 20% time
-        </li>
-      </ul>
-
-      <h2>Projects</h2>
-      <ul>
-        <li>
-          <b>Task Management Website</b><br>
-          Flask • MongoDB • CRUD<br>
-          Full-stack app for task management with registration & CRUD.<br>
-          <a href="https://github.com/23BCE9489-Mongo-DBA-Arshad" target="_blank">View on GitHub</a>
-        </li>
-      </ul>
-
-      <h2>Extracurricular</h2>
-      <ul>
-        <li>Member – Data Analytics Club, VIT-AP University</li>
-        <li>Volunteer – College Tech Fest 2024</li>
+    </div>
+    
+    <!-- Languages -->
+    <div class="section">
+      <h2 class="section-title">Languages</h2>
+      <ul class="skill-list">
+        <li>English – Professional Proficiency</li>
+        <li>Hindi – Fluent</li>
+        <li>Telugu – Conversational</li>
+        <li>Urdu – Native</li>
       </ul>
     </div>
   </div>
 
   <!-- Download Button -->
-  <button class="download-btn" onclick="downloadPDF()">⬇️ Download Resume</button>
+  <button class="download-btn" onclick="downloadPDF()">⬇️ Download Resume as PDF</button>
 
-  <!-- JS for PDF -->
+  <!-- JS Library for PDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script>
     function downloadPDF() {
       const element = document.getElementById("resume");
       const opt = {
-        margin: 0.3,
+        margin: 0.5,
         filename: "SK_Arshad_Resume.pdf",
         image: { type: "jpeg", quality: 0.98 },
         html2canvas: { scale: 2, useCORS: true },
