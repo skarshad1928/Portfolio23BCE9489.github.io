@@ -24,7 +24,6 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       word-wrap: break-word;
       overflow-wrap: break-word;
-      hyphens: auto;
     }
 
     header {
@@ -50,10 +49,12 @@
       display: flex;
       justify-content: space-between;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .left, .right {
       width: 48%;
+      min-width: 300px;
     }
 
     h2 {
@@ -106,7 +107,6 @@
       background: #005bb5;
     }
 
-    /* 👇 Links hidden in PDF */
     @media print {
       a {
         color: black !important;
@@ -139,10 +139,24 @@
 
         <h2>Certifications</h2>
         <ul>
-          <li><a href="https://www.udemy.com/certificate/UC-dd7351c1-4fe9-4e1a-8154-a85794344b4d/" target="_blank">SQL COURSE – Udemy</a></li>
-          <li><a href="https://www.coursera.org/account/accomplishments/verify/5Y4GYTT82DSY" target="_blank">IBM Data Analytics – Coursera</a></li>
-          <li><a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_J99BAXZvWbjCwMYFv_1756132732827_completion_certificate.pdf" target="_blank">Tata Data Visualization – Forage</a></li>
-          <li><a href="https://drive.google.com/file/d/1YIMvDZfqar04vH13GOIEvUCDaN2cqy2M/view" target="_blank">MongoDB DBA – FacePrep</a></li>
+          <li>SQL COURSE – Udemy</li>
+          <li>IBM Data Analytics – Coursera</li>
+          <li>Tata Data Visualization – Forage</li>
+          <li>MongoDB DBA – FacePrep</li>
+        </ul>
+
+        <h2>Achievements</h2>
+        <ul>
+          <li>Secured 96.3% in Intermediate (MPC).</li>
+          <li>Ranked top 5% in SQL Hackathon (Udemy course challenge).</li>
+          <li>Completed 3 industry-recognized certifications in Data Analytics.</li>
+        </ul>
+
+        <h2>Languages</h2>
+        <ul>
+          <li>English – Professional</li>
+          <li>Hindi – Fluent</li>
+          <li>Telugu – Conversational</li>
         </ul>
       </div>
 
@@ -163,6 +177,16 @@
           <li><b>10th Grade (SSC)</b> — [Your School Name] • 100%</li>
         </ul>
 
+        <h2>Internships</h2>
+        <ul>
+          <li>
+            <b>Data Analyst Intern</b> – [Company Name] (MM/YYYY – MM/YYYY)  
+            <br>• Cleaned and analyzed datasets using Python & SQL  
+            <br>• Built Power BI dashboards for business insights  
+            <br>• Automated weekly reports, reducing manual effort by 20%  
+          </li>
+        </ul>
+
         <h2>Projects</h2>
         <ul>
           <li>
@@ -171,6 +195,12 @@
             <br>Full-stack app for user task management with registration & complete CRUD.  
             <br><a href="https://github.com/23BCE9489-Mongo-DBA-Arshad" target="_blank">View Project on GitHub</a>
           </li>
+        </ul>
+
+        <h2>Extracurricular</h2>
+        <ul>
+          <li>Member – Data Analytics Club, VIT-AP University</li>
+          <li>Volunteer – College Tech Fest 2024</li>
         </ul>
       </div>
     </div>
