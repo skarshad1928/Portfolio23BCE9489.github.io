@@ -1,65 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>SK Arshad - Resume</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>SK Arshad — Resume</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <!-- html2pdf for styled export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <!-- jsPDF for plain/ATS export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-  <div class="resume">
-    <!-- Header -->
-    <header>
-      <h1>SK Arshad</h1>
-      <p>📞 +91 7416828005 | 📧 sar213083168@gmail.com</p>
-      <p>🔗 github.com/skarshad1928 | 🔗 linkedin.com/in/shaik-arshad-b86222356</p>
-    </header>
+  <main class="page">
+    <!-- Top actions -->
+    <div class="actions no-print">
+      <button id="btnStyled">Download PDF (Styled)</button>
+      <button id="btnATS" class="ghost">Download PDF (ATS)</button>
+    </div>
 
-    <!-- Summary -->
-    <section>
-      <h2>Summary</h2>
-      <p>Results-driven Data Analyst skilled in Python, R, SQL, Tableau, and Power BI.
-         Experienced in data collection, cleaning, visualization, and applying ML techniques
-         to derive insights and support business decisions.</p>
-    </section>
+    <!-- A4 card -->
+    <section id="resume" class="a4 card">
+      <!-- Header -->
+      <header class="header">
+        <h1>SK Arshad</h1>
+        <div class="contact">
+          <span>📞 +91 7416828005</span>
+          <span>📧 <a href="mailto:sar213083168@gmail.com">sar213083168@gmail.com</a></span>
+          <span>🐙 <a href="https://github.com/skarshad1928" target="_blank">github.com/skarshad1928</a></span>
+          <span>🔗 <a href="https://www.linkedin.com/in/shaik-arshad-b86222356/" target="_blank">linkedin.com/in/shaik-arshad</a></span>
+        </div>
+      </header>
 
-    <!-- Education -->
-    <section>
-      <h2>Education</h2>
-      <ul>
-        <li><strong>B.Tech in CSE</strong> – VIT-AP University (2023–2027), CGPA: 8.0</li>
-        <li><strong>Intermediate (MPC)</strong> – Sri Chaitanya Junior College (2021–2023), 96.3%</li>
-        <li><strong>10th Grade</strong> – [Your School Name], 100%</li>
-      </ul>
-    </section>
+      <!-- Two-column grid -->
+      <div class="grid">
+        <!-- LEFT -->
+        <aside class="col left">
+          <section>
+            <h2>Skills</h2>
+            <ul class="bullets">
+              <li><b>Languages:</b> Python, R, SQL</li>
+              <li><b>Libraries:</b> Pandas, NumPy, Scikit-Learn, Matplotlib, Seaborn, BeautifulSoup, SQLAlchemy</li>
+              <li><b>Tools:</b> Tableau, Power BI, Excel, VS Code, Jupyter, Streamlit, Git</li>
+              <li><b>Databases:</b> MySQL, MongoDB</li>
+              <li><b>Soft Skills:</b> Communication, Problem Solving, Time Management</li>
+            </ul>
+          </section>
 
-    <!-- Skills -->
-    <section>
-      <h2>Skills</h2>
-      <p><strong>Languages:</strong> Python, R, SQL</p>
-      <p><strong>Frameworks:</strong> Pandas, NumPy, Scikit-Learn, Matplotlib, Seaborn</p>
-      <p><strong>Tools:</strong> Tableau, Power BI, Excel, VS Code, Jupyter, Streamlit, Git</p>
-      <p><strong>Databases:</strong> MySQL, MongoDB</p>
-      <p><strong>Soft Skills:</strong> Communication, Problem Solving, Time Management</p>
-    </section>
+          <section>
+            <h2>Certifications</h2>
+            <ul class="bullets">
+              <li><a href="https://www.udemy.com/certificate/UC-dd7351c1-4fe9-4e1a-8154-a85794344b4d/" target="_blank">SQL COURSE – Udemy</a></li>
+              <li><a href="https://www.coursera.org/account/accomplishments/verify/5Y4GYTT82DSY" target="_blank">IBM Introduction to Data Analytics – Coursera</a></li>
+              <li><a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_J99BAXZvWbjCwMYFv_1756132732827_completion_certificate.pdf" target="_blank">Tata Data Visualisation – Forage</a></li>
+              <li><a href="https://drive.google.com/file/d/1YIMvDZfqar04vH13GOIEvUCDaN2cqy2M/view?usp=drive_link" target="_blank">MongoDB DBA – FacePrep</a></li>
+            </ul>
+          </section>
+        </aside>
 
-    <!-- Projects -->
-    <section>
-      <h2>Projects</h2>
-      <p><strong>Task Management Website:</strong> Full-stack CRUD app using Flask + MongoDB.
-      Enabled task creation, update, and deletion. 
-      (<a href="https://github.com/skarshad1928/23BCE9489-Mongo-DBA-Arshad">GitHub</a>)</p>
-    </section>
+        <!-- RIGHT -->
+        <div class="col right">
+          <section>
+            <h2>Summary</h2>
+            <p>
+              Results-driven Data Analyst skilled in Python, SQL, Tableau, and Power BI. Experienced in data collection,
+              cleaning, and visualization; adept with MySQL/MongoDB and SQLAlchemy. Build KPI dashboards and apply
+              Scikit-learn for insights that support business decisions.
+            </p>
+          </section>
 
-    <!-- Certifications -->
-    <section>
-      <h2>Certifications</h2>
-      <ul>
-        <li>SQL Course (Udemy)</li>
-        <li>IBM Introduction to Data Analytics (Coursera)</li>
-        <li>Tata Data Visualisation (Forage)</li>
-        <li>MongoDB Database Administration (FacePrep)</li>
-      </ul>
+          <section>
+            <h2>Education</h2>
+            <ul class="bullets">
+              <li><b>B.Tech in CSE</b> — VIT-AP University (2023–2027) • <b>CGPA:</b> 8.0</li>
+              <li><b>Intermediate (MPC)</b> — Sri Chaitanya Junior College (2021–2023) • 96.3%</li>
+              <li><b>10th Grade (SSC)</b> — [Your School Name] • 100%</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Projects</h2>
+            <div class="item">
+              <div class="item-title">Task Management Website</div>
+              <div class="item-meta">Flask • MongoDB • CRUD</div>
+              <p>Full-stack app for user task management with registration and complete CRUD.</p>
+              <p><b>GitHub:</b> <a href="https://github.com/skarshad1928/23BCE9489-Mongo-DBA-Arshad" target="_blank">/23BCE9489-Mongo-DBA-Arshad</a></p>
+            </div>
+          </section>
+        </div>
+      </div>
     </section>
-  </div>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
