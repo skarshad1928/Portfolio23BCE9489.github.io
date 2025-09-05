@@ -5,116 +5,272 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SK Arshad - Data Analyst Resume</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body { 
-      font-family: Arial, sans-serif; 
-      margin: 20px; 
-      color: #000; 
-      background: #fff; 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      margin: 0;
+      padding: 20px;
+      color: #333; 
+      background: #f9f9f9; 
       line-height: 1.6;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-    h1, h2 { 
-      margin-bottom: 8px; 
+    
+    .resume-container {
+      background: white;
+      padding: 30px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
     }
+    
+    h1 {
+      font-size: 32px;
+      margin-bottom: 5px;
+      color: #1a4f72;
+    }
+    
     h2 { 
-      border-bottom: 1px solid #333; 
-      padding-bottom: 4px; 
-      margin-top: 20px; 
+      border-bottom: 2px solid #1a4f72; 
+      padding-bottom: 6px; 
+      margin-top: 20px;
+      margin-bottom: 12px;
+      color: #1a4f72;
+      font-size: 20px;
     }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+    
+    .contact-info {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .contact-info p { 
+      margin: 5px 0; 
+    }
+    
+    .main-content {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .left-column {
+      flex: 7;
+      min-width: 300px;
+      padding-right: 20px;
+    }
+    
+    .right-column {
+      flex: 3;
+      min-width: 250px;
+    }
+    
     ul { 
-      margin: 5px 0 15px 20px; 
+      margin: 8px 0 15px 20px; 
     }
-    .contact p { 
-      margin: 3px 0; 
+    
+    li {
+      margin-bottom: 8px;
     }
+    
     .download-btn {
-      margin: 20px 0; 
-      padding: 12px 20px; 
+      display: block;
+      margin: 25px auto; 
+      padding: 12px 25px; 
       font-weight: bold;
       border: none; 
-      background: #333; 
+      background: #1a4f72; 
       color: #fff; 
       cursor: pointer;
       border-radius: 5px;
       font-size: 16px;
+      transition: background 0.3s;
     }
+    
     .download-btn:hover {
-      background: #555;
+      background: #2c6da3;
     }
+    
     a {
-      color: #0066cc;
+      color: #1a4f72;
       text-decoration: none;
+      font-weight: 500;
     }
+    
     a:hover {
       text-decoration: underline;
     }
+    
+    .skill-category {
+      font-weight: bold;
+      margin-top: 8px;
+      color: #444;
+    }
+    
     @media print { 
       .download-btn { 
         display: none; 
-      } 
+      }
+      body {
+        background: white;
+        padding: 0;
+      }
+      .resume-container {
+        box-shadow: none;
+        padding: 0;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .header, .main-content {
+        flex-direction: column;
+      }
+      .left-column {
+        padding-right: 0;
+      }
+    }
+    
+    /* PDF-specific styles */
+    @media pdf {
+      body {
+        padding: 0;
+        font-size: 12px;
+      }
+      .resume-container {
+        padding: 20px;
+        box-shadow: none;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 16px;
+        margin-top: 15px;
+      }
+      .download-btn {
+        display: none;
+      }
     }
   </style>
 </head>
-<body id="resume">
+<body>
+  <div class="resume-container" id="resume">
+    <div class="header">
+      <div>
+        <h1>SK Arshad</h1>
+        <p><strong>Data Analyst</strong></p>
+      </div>
+      <div class="contact-info">
+        <p><strong>Phone:</strong> +91 7416828005</p>
+        <p><strong>Email:</strong> sar213083168@gmail.com</p>
+        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/shaik-arshad">linkedin.com/in/shaik-arshad</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/skarshad1928">github.com/skarshad1928</a></p>
+      </div>
+    </div>
 
-  <h1>SK Arshad</h1>
-  <div class="contact">
-    <p><strong>Phone:</strong> +91 7416828005</p>
-    <p><strong>Email:</strong> sar213083168@gmail.com</p>
-    <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/shaik-arshad" target="_blank">linkedin.com/in/shaik-arshad</a></p>
-    <p><strong>GitHub:</strong> <a href="https://github.com/skarshad1928" target="_blank">github.com/skarshad1928</a></p>
+    <h2>Professional Summary</h2>
+    <p>Results-driven Data Analyst skilled in Python, SQL, Tableau, Power BI, and Excel. Experienced in data collection, cleaning, ETL pipelines, and visualization using MySQL, MongoDB, and Snowflake. Proficient in Pandas, NumPy, Scikit-learn to generate actionable insights for business decisions.</p>
+
+    <div class="main-content">
+      <div class="left-column">
+        <h2>Education</h2>
+        <ul>
+          <li><strong>B.Tech in Computer Science & Engineering</strong>, VIT-AP University (2023–2027) — CGPA: 8.0/10</li>
+          <li><strong>Intermediate (MPC)</strong>, Sri Chaitanya Junior College (2021–2023) — 96.3%</li>
+        </ul>
+
+        <h2>Projects</h2>
+        <ul>
+          <li><strong>Task Management Website</strong> — Developed a full-stack task manager using Flask and MongoDB with user authentication, CRUD operations, and responsive design. Improved task completion tracking by 40% in college group projects.</li>
+          <li><strong>LaptopLens: Amazon Laptop Data Pipeline</strong> — Built an ETL pipeline scraping 1000+ laptop listings using Selenium & BeautifulSoup, stored in Snowflake, analyzed with Python (Pandas/Matplotlib). Identified top brands & price-performance trends for consumer insights.</li>
+        </ul>
+      </div>
+
+      <div class="right-column">
+        <h2>Skills</h2>
+        <p class="skill-category">Technical Skills:</p>
+        <p>Python, SQL, R, Tableau, Power BI, Excel, Git, MongoDB, MySQL, Snowflake, Pandas, NumPy, Scikit-learn, Matplotlib, SQLAlchemy, Selenium, BeautifulSoup, Flask</p>
+        
+        <p class="skill-category">Soft Skills:</p>
+        <p>Data Visualization, Statistical Analysis, Problem Solving, Communication, Team Collaboration, Critical Thinking</p>
+
+        <h2>Certifications</h2>
+        <ul>
+          <li>SQL Bootcamp — Udemy</li>
+          <li>IBM Data Analyst Professional Certificate — Coursera</li>
+          <li>Tata Data Visualization Virtual Experience — Forage</li>
+          <li>MongoDB Database Administrator — FacePrep</li>
+        </ul>
+
+        <h2>Achievements</h2>
+        <ul>
+          <li>Top 5% Rank — SQL Hackathon (Udemy, 5000+ participants)</li>
+          <li>Completed 3 Data Analytics Certifications in 6 Months</li>
+          <li>Scored 96.3% in Intermediate (MPC) Board Exams</li>
+        </ul>
+      </div>
+    </div>
+
+    <button class="download-btn" onclick="downloadPDF()">📥 Download Resume as PDF</button>
   </div>
-
-  <h2>Professional Summary</h2>
-  <p>Results-driven Data Analyst skilled in Python, SQL, Tableau, Power BI, and Excel. Experienced in data collection, cleaning, ETL pipelines, and visualization using MySQL, MongoDB, and Snowflake. Proficient in Pandas, NumPy, Scikit-learn to generate actionable insights for business decisions.</p>
-
-  <h2>Education</h2>
-  <ul>
-    <li><strong>B.Tech in Computer Science & Engineering</strong>, VIT-AP University (2023–2027) — CGPA: 8.0/10</li>
-    <li><strong>Intermediate (MPC)</strong>, Sri Chaitanya Junior College (2021–2023) — 96.3%</li>
-  </ul>
-
-  <h2>Skills</h2>
-  <p><strong>Technical Skills:</strong> Python, SQL, R, Tableau, Power BI, Excel, Git, MongoDB, MySQL, Snowflake, Pandas, NumPy, Scikit-learn, Matplotlib, SQLAlchemy, Selenium, BeautifulSoup, Flask</p>
-  <p><strong>Soft Skills:</strong> Data Visualization, Statistical Analysis, Problem Solving, Communication, Team Collaboration, Critical Thinking</p>
-
-  <h2>Projects</h2>
-  <ul>
-    <li><strong>Task Management Website</strong> — Developed a full-stack task manager using Flask and MongoDB with user authentication, CRUD operations, and responsive design. Improved task completion tracking by 40% in college group projects.</li>
-    <li><strong>LaptopLens: Amazon Laptop Data Pipeline</strong> — Built an ETL pipeline scraping 1000+ laptop listings using Selenium & BeautifulSoup, stored in Snowflake, analyzed with Python (Pandas/Matplotlib). Identified top brands & price-performance trends for consumer insights.</li>
-  </ul>
-
-  <h2>Certifications</h2>
-  <ul>
-    <li>SQL Bootcamp — Udemy</li>
-    <li>IBM Data Analyst Professional Certificate — Coursera</li>
-    <li>Tata Data Visualization Virtual Experience — Forage</li>
-    <li>MongoDB Database Administrator — FacePrep</li>
-  </ul>
-
-  <h2>Achievements</h2>
-  <ul>
-    <li>Top 5% Rank — SQL Hackathon (Udemy, 5000+ participants)</li>
-    <li>Completed 3 Data Analytics Certifications in 6 Months</li>
-    <li>Scored 96.3% in Intermediate (MPC) Board Exams</li>
-  </ul>
-
-  <button class="download-btn" onclick="downloadPDF()">📥 Download Resume as PDF</button>
 
   <!-- html2pdf.js library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script>
     function downloadPDF() {
+      // Create a clone of the resume element to modify for PDF
       const element = document.getElementById("resume");
+      const clone = element.cloneNode(true);
+      
+      // Apply PDF-specific styles to the clone
+      clone.style.padding = "15px";
+      clone.style.fontSize = "12px";
+      
+      // Hide the download button in the PDF
+      const button = clone.querySelector('.download-btn');
+      if (button) button.style.display = 'none';
+      
+      // Create a temporary container for PDF generation
+      const tempContainer = document.createElement('div');
+      tempContainer.style.position = 'absolute';
+      tempContainer.style.left = '-9999px';
+      tempContainer.appendChild(clone);
+      document.body.appendChild(tempContainer);
+      
+      // Generate PDF
       html2pdf()
         .set({
-          margin: 0.5,
+          margin: 0.3,
           filename: "SK_Arshad_Data_Analyst_Resume.pdf",
           image: { type: "jpeg", quality: 0.98 },
-          html2canvas: { scale: 2 },
-          jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
+          html2canvas: { 
+            scale: 2,
+            useCORS: true,
+            logging: false
+          },
+          jsPDF: { 
+            unit: "in", 
+            format: "a4", 
+            orientation: "portrait" 
+          }
         })
-        .from(element)
-        .save();
+        .from(tempContainer)
+        .save()
+        .then(() => {
+          // Clean up the temporary container
+          document.body.removeChild(tempContainer);
+        });
     }
   </script>
 </body>
