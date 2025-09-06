@@ -1,113 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SK Arshad – Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SK Arshad – Data Analyst Portfolio</title>
   <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
-      margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f9f9f9; color: #111;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      transition: background 0.4s ease, color 0.4s ease;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
-    header {
-      background: #111; color: #fff; padding: 40px 20px; text-align: center;
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s ease;
     }
-    header h1 { margin: 0; font-size: 2rem; }
-    header p { margin: 4px 0; font-size: 1rem; color: #ccc; }
-    
-    .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
-    section { margin-bottom: 40px; }
-    h2 { font-size: 1.5rem; margin-bottom: 16px; border-bottom: 2px solid #111; display: inline-block; padding-bottom: 4px; }
-    
-    /* Profile image */
-    .profile-img {
-      display: flex; justify-content: center; margin-bottom: 20px;
+    a:hover, a:focus {
+      color: var(--accent);
+      outline: none;
     }
-    .profile-img img {
-      width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #111;
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 50%;
+      border: 4px solid var(--primary);
+      box-shadow: 0 8px 20px var(--shadow);
+      transition: transform 0.3s ease;
+      cursor: pointer;
     }
-    .upload-btn {
-      display: block; margin: 10px auto; padding: 8px 16px; border: 1px solid #111; background: #fff; cursor: pointer;
-      border-radius: 8px; font-size: 0.9rem;
+    img:hover, img:focus {
+      transform: scale(1.05);
+      outline: none;
+    }
+    h1, h2, h3 {
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      color: var(--heading);
+    }
+    p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+    button {
+      cursor: pointer;
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      padding: 0.6rem 1.4rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    button:hover, button:focus {
+      background: var(--accent);
+      outline: none;
+    }
+    input[type="file"] {
+      display: none;
     }
 
-    .projects, .skills { display: grid; gap: 20px; }
-    .project, .skill { background: #fff; padding: 16px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    
-    .contact a { color: #111; text-decoration: none; margin-right: 16px; }
-    .contact a:hover { text-decoration: underline; }
+    /* Variables */
+    :root {
+      --primary: #00bcd4;
+      --accent: #0097a7;
+      --bg: #f9fafb;
+      --text: #222;
+      --text-secondary: #555;
+      --heading: #111;
+      --card-bg: #fff;
+      --shadow: rgba(0,0,0,0.1);
+      --nav-bg: #fff;
+      --nav-text: #111;
+      --border: #ddd;
+    }
+    [data-theme="dark"] {
+      --primary: #00bcd4;
+      --accent: #00acc1;
+      --bg: #121212;
+      --text: #e0e0e0;
+      --text-secondary: #bbb;
+      --heading: #fff;
+      --card-bg: #1e1e1e;
+      --shadow: rgba(0,0,0,0.7);
+      --nav-bg: #1a1a1a;
+      --nav-text: #e0e0e0;
+      --border: #333;
+    }
+
+    /* Layout */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--nav-bg);
+      box-shadow: 0 2px 10px var(--shadow);
+      z-index: 10000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.4s ease;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--primary);
+      letter-spacing: 2px;
+      user-select: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--nav-text);
+      position: relative;
+      padding: 0.25rem 0;
+      transition: color 0.3s ease;
+    }
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: var(--primary);
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+    nav ul li a:hover::after,
+    nav ul li a:focus::after {
+      width: 100%;
+    }
+
+    .toggle-theme {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      user-select: none;
+      transition: all 0.3s ease;
+    }
+    .toggle-theme:hover, .toggle-theme:focus {
+      background: var(--primary);
+      color: #fff;
+      outline: none;
+    }
+
+    main {
+      flex-grow: 1;
+      max-width: 900px;
+      margin: 3rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    /* About Section */
+    #about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      padding-bottom: 3rem;
+      border-bottom: 3px solid var(--border);
+    }
+    #about .photo-wrapper {
+      flex: 0 0 180px;
+      position: relative;
+    }
+    #about .upload-btn {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      border: none;
+      font-size: 22px;
+      line-height: 38px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px var(--shadow);
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    #about .upload-btn:hover, #about .upload-btn:focus {
+      background: var(--accent);
+      outline: none;
+    }
+    #about .profile-info {
+      flex: 1 1 400px;
+    }
+    #about h1 {
+      font-size: 3rem;
+      margin-bottom: 0.3rem;
+      color: var(--primary);
+    }
+    #about p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.5;
+    }
+
+    /* Projects Section */
+    #projects {
+      margin-top: 4rem;
+    }
+    #projects h2 {
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+      border-bottom: 4px solid var(--primary);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+      font-weight: 800;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 12px 30px var(--shadow);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .project-card:hover, .project-card:focus-within {
+      transform: translateY(-10px);
+      box-shadow: 0 18px 40px var(--shadow);
+      outline: none;
+    }
+    .project-card h3 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .project-card p {
+      flex-grow: 1;
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+    .project-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .project-links a {
+      background: var(--primary);
+      color: #fff;
+      padding: 0.6rem 1.4rem;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 6px 15px rgba(0, 188, 212, 0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    .project-links a:hover, .project-links a:focus {
+      background: var(--accent);
+      outline: none;
+    }
+    .project-links a svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* Skills Section */
+    #skills {
+      margin-top: 4rem;
+    }
+    #skills h2 {
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+      border-bottom: 4px solid var(--primary);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+      font-weight: 800;
+    }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .skill {
+      background: var(--primary);
+      color: #fff;
+      padding: 0.7rem 1.6rem;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 15px rgba(0, 188, 212, 0.6);
+      user-select: none;
+      transition: background 0.3s ease;
+      cursor: default;
+    }
+    .skill:hover {
+      background: var(--accent);
+    }
+
+    /* Internships Section */
+    #internships {
+      margin-top: 4rem;
+    }
+    #internships h2 {
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+      border-bottom: 4px solid var(--primary);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+      font-weight: 800;
+    }
+    .internships-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+    .internship-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 12px 30px var(--shadow);
+      padding: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .internship-card:hover, .internship-card:focus {
+      transform: translateY(-10px);
+      box-shadow: 0 18px 40px var(--shadow);
+      outline: none;
+    }
+    .internship-card h3 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .internship-card p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.4;
+    }
+
+    /* Contact Section */
+    #contact {
+      margin-top: 4rem;
+      padding-bottom: 3rem;
+      border-top: 3px solid var(--border);
+    }
+    #contact h2 {
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+      border-bottom: 4px solid var(--primary);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+      font-weight: 800;
+    }
+    .contact-links {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .contact-links a {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      padding: 0.6rem 1.8rem;
+      border-radius: 30px;
+      box-shadow: 0 6px 15px rgba(0, 188, 212, 0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      transition: background 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+    .contact-links a:hover, .contact-links a:focus {
+      background: var(--primary);
+      color: #fff;
+      outline: none;
+    }
+    .contact-links a svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+      user-select: none;
+    }
 
     /* Responsive */
-    @media (min-width: 700px) {
-      .projects { grid-template-columns: repeat(2, 1fr); }
-      .skills { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 768px) {
+      #about {
+        flex-direction: column;
+        text-align: center;
+      }
+      #about .photo-wrapper {
+        margin-bottom: 1.5rem;
+      }
+      nav ul {
+        gap: 1.2rem;
+      }
+      .projects-grid, .internships-list {
+        grid-template-columns: 1fr;
+      }
+      .contact-links {
+        justify-content: center;
+      }
+    }
+
+    /* Accessibility focus */
+    a:focus-visible, button:focus-visible, .project-card:focus-within, .internship-card:focus {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>SK Arshad</h1>
-    <p>Data Analyst | Python, SQL, Power BI, Tableau</p>
-    <div class="profile-img">
-      <img id="profilePhoto" src="https://via.placeholder.com/150" alt="Profile Photo">
-    </div>
-    <input type="file" accept="image/*" class="upload-btn" onchange="previewPhoto(event)">
+    <div class="logo" tabindex="0" aria-label="SK Arshad Portfolio Logo">SK Arshad</div>
+    <nav aria-label="Primary navigation">
+      <ul>
+        <li><a href="#about" tabindex="0">About</a></li>
+        <li><a href="#projects" tabindex="0">Projects</a></li>
+        <li><a href="#skills" tabindex="0">Skills</a></li>
+        <li><a href="#internships" tabindex="0">Internships</a></li>
+        <li><a href="#contact" tabindex="0">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="toggle-theme" aria-label="Toggle dark and light mode" id="themeToggle">Dark Mode</button>
   </header>
 
-  <div class="container">
-    <section id="about">
-      <h2>About Me</h2>
-      <p>Hi! I'm SK Arshad, a passionate Data Analyst. I love working with data, building ETL pipelines, and creating insightful dashboards using Python, SQL, Power BI, and Tableau. I enjoy transforming raw data into actionable insights.</p>
+  <main>
+    <!-- About Section -->
+    <section id="about" aria-label="About SK Arshad">
+      <div class="photo-wrapper">
+        <img id="profilePhoto" src="https://via.placeholder.com/180" alt="Profile photo of SK Arshad" tabindex="0" />
+        <input type="file" id="uploadPhoto" accept="image/*" aria-label="Upload profile photo" />
+        <button class="upload-btn" aria-label="Upload new profile photo" title="Upload new profile photo" onclick="document.getElementById('uploadPhoto').click()">✎</button>
+      </div>
+      <div class="profile-info">
+        <h1>SK Arshad</h1>
+        <p><strong>Data Analyst</strong> passionate about transforming data into actionable insights. Skilled in Python, SQL, Power BI, Tableau, and building modern dashboards to drive business decisions.</p>
+      </div>
     </section>
 
-    <section id="projects">
+    <!-- Projects Section -->
+    <section id="projects" aria-label="Projects">
       <h2>Projects</h2>
-      <div class="projects">
-        <div class="project">
-          <h3>Task Management Website</h3>
-          <p>Full-stack app using Flask & MongoDB. Implemented auth, CRUD, responsive UI; improved team task completion by 40%.</p>
-        </div>
-        <div class="project">
-          <h3>LaptopLens – Amazon Data Pipeline</h3>
-          <p>Built ETL pipeline with Selenium & BeautifulSoup for 1000+ listings. Analyzed in Pandas & Matplotlib to derive insights on brands and pricing.</p>
-        </div>
-      </div>
-    </section>
+      <div class="projects-grid">
+        <article class="project-card" tabindex="0" aria-labelledby="project1-title" aria-describedby="project1-desc">
+          <h3 id="project1-title">Task Management Website</h3>
+          <p id="project1-desc">Full-stack app using Flask &amp; MongoDB. Implemented authentication, CRUD operations, and responsive UI; improved team task completion by 40%.</p>
+          <div class="project-links">
+            <a href="https://github.com/skarshad1928/task-manager" target="_blank" rel="noopener" aria-label="GitHub repository for Task Management Website">
+              GitHub
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M14 3v2h3.59L10 12.59 11.41 14 19 6.41V10h2V3z"></path></svg>
+            </a>
+            <a href="#" aria-label="Live demo of Task Management Website">Live Demo</a>
+          </div>
+        </article>
 
-    <section id="skills">
-      <h2>Technical Skills</h2>
-      <div class="skills">
-        <div class="skill">Python</div>
-        <div class="skill">SQL</div>
-        <div class="skill">R</div>
-        <div class="skill">Tableau</div>
-        <div class="skill">Power BI</div>
-        <div class="skill">Excel</div>
-        <div class="skill">MongoDB</div>
-        <div class="skill">MySQL</div>
-        <div class="skill">Flask</div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p class="contact">
-        <a href="mailto:sar213083168@gmail.com">Email</a>
-        <a href="https://linkedin.com/in/shaik-arshad" target="_blank">LinkedIn</a>
-        <a href="https://github.com/skarshad1928" target="_blank">GitHub</a>
-      </p>
-    </section>
-  </div>
-
-  <script>
-    function previewPhoto(event) {
-      const reader = new FileReader();
-      reader.onload = function() {
-        document.getElementById('profilePhoto').src = reader.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-  </script>
-
-</body>
-</html>
+        <article class="project-card" tabindex="0" aria-labelledby="project2-title" aria-describedby="project2-desc">
+          <h3 id="project2-title">LaptopLens – Amazon Data Pipeline</h3>
+          <p id="project2-desc">Built ETL pipeline with Selenium &amp; BeautifulSoup for 1000+ listings. Analyzed data using Pandas &amp; Matplotlib to extract insights.</p>
+          <div class="project-links">
+            <a href="https://github.com/skarshad1928/laptoplens" target="_blank" rel="noopener" aria-label="GitHub repository for LaptopLens project">
+              GitHub
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M14 3v2h3.59
