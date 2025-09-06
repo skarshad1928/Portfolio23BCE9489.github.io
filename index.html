@@ -1,174 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SK Arshad – Data Analyst (ATS One‑Page)</title>
-  <meta name="description" content="ATS-friendly, single-page resume for SK Arshad – Data Analyst" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SK Arshad – Portfolio</title>
   <style>
-    /* ---------- Base, system fonts, ATS-safe ---------- */
-    :root { --base: 14px; --tight: 13px; --max-width: 800px; }
-    html { box-sizing: border-box; }
-    *, *:before, *:after { box-sizing: inherit; }
     body {
-      font: 400 var(--base)/1.35 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: #111; background: #fff; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f9f9f9; color: #111;
     }
-    .page {
-      width: var(--max-width);
-      margin: 24px auto; padding: 24px 28px; background: #fff;
-      border: 1px solid #e5e7eb; border-radius: 12px;
+    header {
+      background: #111; color: #fff; padding: 40px 20px; text-align: center;
     }
-    header h1 { font-size: 1.35rem; margin: 0 0 4px; letter-spacing: 0.2px; }
-    .muted { color: #374151; }
-    a { color: #111; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .row { display: grid; grid-template-columns: 1fr; gap: 8px; }
-    .hdr { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; }
-    .hdr span { white-space: nowrap; }
-    h2 { font-size: 0.98rem; margin: 14px 0 6px; text-transform: uppercase; letter-spacing: 0.8px; }
-    ul { margin: 6px 0 0 18px; padding: 0; }
-    li { margin: 2px 0; }
-    .sec { margin-top: 10px; }
-    .tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:4px; }
-    .tag { border: 1px solid #e5e7eb; padding:2px 6px; border-radius: 999px; font-size: 0.78rem; }
-    .controls { display:flex; gap:8px; margin-bottom: 8px; }
-    .btn {
-      border: 1px solid #111; background: transparent; color:#111; border-radius: 999px;
-      font-size: 0.85rem; padding: 6px 10px; cursor: pointer;
+    header h1 { margin: 0; font-size: 2rem; }
+    header p { margin: 4px 0; font-size: 1rem; color: #ccc; }
+    
+    .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+    section { margin-bottom: 40px; }
+    h2 { font-size: 1.5rem; margin-bottom: 16px; border-bottom: 2px solid #111; display: inline-block; padding-bottom: 4px; }
+    
+    /* Profile image */
+    .profile-img {
+      display: flex; justify-content: center; margin-bottom: 20px;
     }
-    .btn:active { transform: translateY(1px); }
+    .profile-img img {
+      width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #111;
+    }
+    .upload-btn {
+      display: block; margin: 10px auto; padding: 8px 16px; border: 1px solid #111; background: #fff; cursor: pointer;
+      border-radius: 8px; font-size: 0.9rem;
+    }
 
-    /* compact mode to ensure single page if needed */
-    .compact body, .compact { --base: 13px; }
-    .compact h1 { font-size: 1.2rem; }
-    .compact h2 { font-size: 0.92rem; }
-    .compact .page { padding: 18px 22px; }
-    .compact li { margin: 1px 0; }
+    .projects, .skills { display: grid; gap: 20px; }
+    .project, .skill { background: #fff; padding: 16px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    
+    .contact a { color: #111; text-decoration: none; margin-right: 16px; }
+    .contact a:hover { text-decoration: underline; }
 
-    /* Print styles: force single A4 page, hide controls card border */
-    @media print {
-      @page { size: A4; margin: 10mm; } /* Tight but safe margins */
-      body { margin: 0; }
-      .page { border: none; border-radius: 0; box-shadow: none; width: auto; margin: 0; padding: 0; }
-      .controls { display: none; }
-      a { text-decoration: none; color: #000; }
+    /* Responsive */
+    @media (min-width: 700px) {
+      .projects { grid-template-columns: repeat(2, 1fr); }
+      .skills { grid-template-columns: repeat(3, 1fr); }
     }
   </style>
 </head>
 <body>
-  <div class="page" id="page">
-    <div class="controls" aria-hidden="true">
-      <button class="btn" onclick="window.print()">Download PDF</button>
-      <button class="btn" id="toggleCompact">Toggle Compact</button>
+
+  <header>
+    <h1>SK Arshad</h1>
+    <p>Data Analyst | Python, SQL, Power BI, Tableau</p>
+    <div class="profile-img">
+      <img id="profilePhoto" src="https://via.placeholder.com/150" alt="Profile Photo">
     </div>
+    <input type="file" accept="image/*" class="upload-btn" onchange="previewPhoto(event)">
+  </header>
 
-    <header class="row">
-      <h1>SK Arshad</h1>
-      <div class="hdr muted">
-        <span>Phone: +91 7416828005</span>
-        <span>•</span>
-        <span>Email: <a href="mailto:sar213083168@gmail.com">sar213083168@gmail.com</a></span>
-        <span>•</span>
-        <span>LinkedIn: <a href="https://linkedin.com/in/shaik-arshad" target="_blank" rel="noreferrer">linkedin.com/in/shaik-arshad</a></span>
-        <span>•</span>
-        <span>GitHub: <a href="https://github.com/skarshad1928" target="_blank" rel="noreferrer">github.com/skarshad1928</a></span>
-      </div>
-    </header>
-
-    <section class="sec" aria-label="Professional Summary">
-      <h2>Professional Summary</h2>
-      <p class="muted" style="margin: 4px 0 0;">
-        Data Analyst skilled in Python, SQL, Tableau, Power BI, and Excel. Experience building ETL pipelines, visualizing insights, and managing databases (MySQL, MongoDB, Snowflake). Proficient with Pandas, NumPy, scikit-learn, and statistics to deliver actionable insights and support decisions.
-      </p>
+  <div class="container">
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Hi! I'm SK Arshad, a passionate Data Analyst. I love working with data, building ETL pipelines, and creating insightful dashboards using Python, SQL, Power BI, and Tableau. I enjoy transforming raw data into actionable insights.</p>
     </section>
 
-    <section class="sec" aria-label="Education">
-      <h2>Education</h2>
-      <ul>
-        <li><strong>B.Tech, Computer Science &amp; Engineering</strong> – VIT‑AP University (2023–2027) | CGPA: 8.0/10</li>
-        <li><strong>Intermediate (MPC)</strong> – Sri Chaitanya Junior College (2021–2023) | 96.3%</li>
-      </ul>
-    </section>
-
-    <section class="sec" aria-label="Projects">
+    <section id="projects">
       <h2>Projects</h2>
-      <ul>
-        <li><strong>Task Management Website</strong> — Full‑stack app (Flask, MongoDB). Implemented auth, CRUD, responsive UI; improved team task completion by 40%.</li>
-        <li><strong>LaptopLens – Amazon Laptop Data Pipeline</strong> — Built ETL with Selenium &amp; BeautifulSoup to scrape 1000+ listings. Stored in Snowflake; analyzed with Pandas &amp; Matplotlib to derive brand performance and price segmentation insights.</li>
-      </ul>
-    </section>
-
-    <section class="sec" aria-label="Certifications">
-      <h2>Certifications</h2>
-      <ul>
-        <li>IBM Data Analyst Professional Certificate (Coursera)</li>
-        <li>SQL Bootcamp (Udemy)</li>
-        <li>Tata Data Visualization Virtual Experience (Forage)</li>
-        <li>MongoDB Database Administrator (FacePrep)</li>
-      </ul>
-    </section>
-
-    <section class="sec" aria-label="Technical Skills">
-      <h2>Technical Skills</h2>
-      <div class="tags" aria-label="Skills list">
-        <span class="tag">Python</span>
-        <span class="tag">SQL</span>
-        <span class="tag">R</span>
-        <span class="tag">Tableau</span>
-        <span class="tag">Power BI</span>
-        <span class="tag">Excel</span>
-        <span class="tag">Git</span>
-        <span class="tag">MongoDB</span>
-        <span class="tag">MySQL</span>
-        <span class="tag">Snowflake</span>
-        <span class="tag">Pandas</span>
-        <span class="tag">NumPy</span>
-        <span class="tag">Scikit‑learn</span>
-        <span class="tag">Matplotlib</span>
-        <span class="tag">SQLAlchemy</span>
-        <span class="tag">Selenium</span>
-        <span class="tag">BeautifulSoup</span>
-        <span class="tag">Flask</span>
+      <div class="projects">
+        <div class="project">
+          <h3>Task Management Website</h3>
+          <p>Full-stack app using Flask & MongoDB. Implemented auth, CRUD, responsive UI; improved team task completion by 40%.</p>
+        </div>
+        <div class="project">
+          <h3>LaptopLens – Amazon Data Pipeline</h3>
+          <p>Built ETL pipeline with Selenium & BeautifulSoup for 1000+ listings. Analyzed in Pandas & Matplotlib to derive insights on brands and pricing.</p>
+        </div>
       </div>
     </section>
 
-    <section class="sec" aria-label="Soft Skills">
-      <h2>Soft Skills</h2>
-      <ul>
-        <li>Data Visualization</li>
-        <li>Statistical Analysis</li>
-        <li>Problem Solving</li>
-        <li>Communication</li>
-        <li>Team Collaboration</li>
-        <li>Critical Thinking</li>
-      </ul>
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <div class="skills">
+        <div class="skill">Python</div>
+        <div class="skill">SQL</div>
+        <div class="skill">R</div>
+        <div class="skill">Tableau</div>
+        <div class="skill">Power BI</div>
+        <div class="skill">Excel</div>
+        <div class="skill">MongoDB</div>
+        <div class="skill">MySQL</div>
+        <div class="skill">Flask</div>
+      </div>
     </section>
 
-    <section class="sec" aria-label="Achievements">
-      <h2>Achievements</h2>
-      <ul>
-        <li>Active member of Data Science Club activities</li>
-      </ul>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p class="contact">
+        <a href="mailto:sar213083168@gmail.com">Email</a>
+        <a href="https://linkedin.com/in/shaik-arshad" target="_blank">LinkedIn</a>
+        <a href="https://github.com/skarshad1928" target="_blank">GitHub</a>
+      </p>
     </section>
   </div>
 
   <script>
-    // Toggle compact mode to help force a single page if your content slightly overflows.
-    document.getElementById('toggleCompact').addEventListener('click', function(){
-      document.documentElement.classList.toggle('compact');
-    });
-
-    // Auto-compact if content height is just a bit over one A4 page (approx for screen preview)
-    function ensureOnePage() {
-      const page = document.getElementById('page');
-      const approxA4Px = 1122; // ~ A4 height in px at 96dpi for preview (not print-exact but helps)
-      if (page.offsetHeight > approxA4Px) {
-        document.documentElement.classList.add('compact');
+    function previewPhoto(event) {
+      const reader = new FileReader();
+      reader.onload = function() {
+        document.getElementById('profilePhoto').src = reader.result;
       }
+      reader.readAsDataURL(event.target.files[0]);
     }
-    window.addEventListener('load', ensureOnePage);
-    window.addEventListener('resize', ensureOnePage);
   </script>
+
 </body>
 </html>
